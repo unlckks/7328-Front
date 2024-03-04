@@ -70,6 +70,7 @@ const Home: React.FC = () => {
     // Navigate to student/faculty profile.
     if (user.role === 'student') { navigate('/student-profile'); }
     else if (user.role === 'faculty') { navigate('/faculty-profile'); }
+    
   };
 
   // Use the 'useEffect' hook to execute code after the component renders.
@@ -185,6 +186,36 @@ const Home: React.FC = () => {
                     style={{ marginLeft: '5px', marginRight: '10px' }}
                   >
                     View Applications
+                  </Button>
+                </>
+              ) : user.role === 'admin' ? (
+                <>
+                  <Button
+                    component={Link}
+                    to="/viewStudents"
+                    variant="contained"
+                    color="secondary"
+                    style={{ marginLeft: '5px', marginRight: '5px' }}
+                  >
+                   view Students
+                  </Button>
+                  <Button
+                    component={Link}
+                    to="/viewCourses"
+                    variant="contained"
+                    color="secondary"
+                    style={{ marginLeft: '5px', marginRight: '10px' }}
+                  >
+                    View Courses
+                  </Button>
+                  <Button
+                    component={Link}
+                    to="/viewFacuty"
+                    variant="contained"
+                    color="secondary"
+                    style={{ marginLeft: '5px', marginRight: '10px' }}
+                  >
+                    View Facuty
                   </Button>
                 </>
               ) : (

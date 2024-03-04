@@ -134,10 +134,12 @@ const RegistrationPage: React.FC = () => {
             >
               <FormControlLabel value="student" control={<Radio />} label="Student" />
               <FormControlLabel value="faculty" control={<Radio />} label="Faculty" required />
+              <FormControlLabel value="admin" control={<Radio />} label="Admin" />
+              
             </RadioGroup>  
           </FormControl>
 
-
+          
           {userType == 'student' && (
             <p>
               <FormControl fullWidth>
@@ -157,9 +159,7 @@ const RegistrationPage: React.FC = () => {
                 </Select> 
               </FormControl>
             </p>
-          )} 
-
-
+          )}
 
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
@@ -245,6 +245,7 @@ const RegistrationPage: React.FC = () => {
               <FormHelperText>{message}</FormHelperText>
             </Grid>
           </Grid>
+
           <LoadingButton
             type="submit"
             fullWidth
