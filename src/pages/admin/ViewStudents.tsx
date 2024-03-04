@@ -10,6 +10,12 @@ import AdminService from '../../services/admin';
 
 
 export type StudentData = {
+  UserId: number;
+  year: number;
+  user: UserData; 
+};
+
+export type UserData = {
   id: number;
   smuNo: string;
   username: string;
@@ -18,10 +24,9 @@ export type StudentData = {
   lastName: string;
 };
 
-
 const ViewStudents: React.FC = () => {
   const [students, setStudents] = useState<StudentData[]>([]);
-
+  
   const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
     { field: 'smuNo', headerName: 'SMU No', width: 130 },
@@ -35,13 +40,16 @@ const ViewStudents: React.FC = () => {
 
 
   const rows = students.map((student) => ({
-    id: student.id,
-    smuNo: student.smuNo,
-    username: student.username,
-    email: student.email,
-    firstName: student.firstName,
-    lastName: student.lastName,
-  }));
+          
+    id: student.user.id,
+    smuNo: student.user.smuNo,
+    username: student.user.username,
+    email: student.user.email,
+    firstName: student.user.firstName,
+    lastName: student.user.lastName,
+  })).filter((student) => {
+    return student.id == 1; 
+  });
 
   useEffect(()=>{
     const fetchStudents = async () => {
