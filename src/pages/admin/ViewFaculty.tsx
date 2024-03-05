@@ -29,22 +29,31 @@ export const ViewFaculty: React.FC = () => {
 
 
 
-  const rows = faculty.map((faculty) => ({
+  const rows = faculty.map((faculty,index) => ({
+    id: index,
     userId: faculty.userId,
     designation: faculty.designation,
     department: faculty.department
-  })).filter((faculty) => {
-    return faculty.userId == 1;
-  });
+  }))
+  ;
 
   useEffect(() => {
     const fetchFaculty = async () => {
-      const faculty = await AdminService.getFaculty();
-      setFaculty(faculty);
+      try {
+        const facultyData = await AdminService.getFaculty();
+        if (facultyData && Array.isArray(facultyData)) {
+          setFaculty(facultyData);
+        } else {
+          // Handle the case where facultyData is not an array
+          console.error('Data fetched is not an array:', facultyData);
+        }
+      } catch (error) {
+        // Handle the error case
+        console.error('Failed to fetch faculty:', error);
+      }
     };
 
     fetchFaculty();
-
   }, []);
 
   return (

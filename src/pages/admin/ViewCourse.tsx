@@ -42,12 +42,19 @@ export const ViewCourse: React.FC = () => {
 
   useEffect(() => {
     const fetchCourse = async () => {
-      const course = await AdminService.getCourse();
-      console.log(course);
-      setCourse(course);
-      console.log(course);
+      try {
+        const CourseData = await AdminService.getCourse();
+        if (CourseData && Array.isArray(CourseData)) {
+          setCourse(CourseData);
+        } else {
+          // Handle the case where facultyData is not an array
+          console.error('Data fetched is not an array:', CourseData);
+        }
+      } catch (error) {
+        // Handle the error case
+        console.error('Failed to fetch Course:', error);
+      }
     };
-
     fetchCourse();
 
   }, []);
