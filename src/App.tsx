@@ -20,6 +20,8 @@ import ViewApplications from './pages/application/ViewApplications';
 import EditApplication from './pages/application/EditApplication';
 import ViewApplication from './pages/application/ViewApplication';
 import ViewStudents from'./pages/admin/ViewStudents';
+import ViewCourse from './pages/admin/ViewCourse';
+import ViewFaculty from './pages/admin/ViewFaculty';
 import MockResume from './pages/MockResume';
 import HomeDefault from './pages/HomeDefault';
 import ProviderLayout, { UserContext } from './provider';
@@ -68,9 +70,13 @@ function PrivateRouteJob() {
   }
 
   if (userContext.user.role === 'student') {
-    return <ViewJobsStudent/>;
+    return <ViewJobsStudent />;
   } else if (userContext.user.role === 'faculty') {
-    return <ViewJobs/>;}
+    return <ViewJobs />;
+  }
+  else if (userContext.user.role === 'admin') {
+    return <ViewStudents />;
+  }
   {
     return <Navigate to="/unauthorized" />;
   }
@@ -101,6 +107,8 @@ const App: React.FC = () => {
           <Route path="/application-form" element={<ApplicationPage />} />
           <Route path="/view-applications" element={<PrivateRoute role="faculty"><ViewApplications /></PrivateRoute>} />
           <Route path="/viewStudents" element={<PrivateRoute role="admin"><ViewStudents /></PrivateRoute>} />
+          <Route path="/viewCourse" element={<PrivateRoute role="admin"><ViewCourse /></PrivateRoute>} />
+          <Route path="/ViewFaculty" element={<PrivateRoute role="admin"><ViewFaculty /></PrivateRoute>} />
           <Route path="/view-application/:id" element={<PrivateRoute role="faculty"><ViewApplication /></PrivateRoute>} />
           <Route path="/edit-application/:id" element={<PrivateRoute role="student"><EditApplication /></PrivateRoute>} />
           <Route path="/user-data" element={<UserDataPage />} />

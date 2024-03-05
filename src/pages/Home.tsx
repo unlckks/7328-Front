@@ -201,16 +201,16 @@ const Home: React.FC = () => {
                   </Button>
                   <Button
                     component={Link}
-                    to="/viewCourses"
+                    to="/viewCourse"
                     variant="contained"
                     color="secondary"
                     style={{ marginLeft: '5px', marginRight: '10px' }}
                   >
-                    View Courses
+                    View Course
                   </Button>
                   <Button
                     component={Link}
-                    to="/viewFacuty"
+                    to="/ViewFaculty"
                     variant="contained"
                     color="secondary"
                     style={{ marginLeft: '5px', marginRight: '10px' }}

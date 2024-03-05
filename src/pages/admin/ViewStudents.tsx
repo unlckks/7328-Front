@@ -1,5 +1,5 @@
 import { DataGrid } from '@mui/x-data-grid';
-import React, { useState ,useEffect  } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Title,
@@ -12,7 +12,7 @@ import AdminService from '../../services/admin';
 export type StudentData = {
   UserId: number;
   year: number;
-  user: UserData; 
+  user: UserData;
 };
 
 export type UserData = {
@@ -26,7 +26,7 @@ export type UserData = {
 
 const ViewStudents: React.FC = () => {
   const [students, setStudents] = useState<StudentData[]>([]);
-  
+
   const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
     { field: 'smuNo', headerName: 'SMU No', width: 130 },
@@ -40,7 +40,7 @@ const ViewStudents: React.FC = () => {
 
 
   const rows = students.map((student) => ({
-          
+
     id: student.user.id,
     smuNo: student.user.smuNo,
     username: student.user.username,
@@ -48,16 +48,16 @@ const ViewStudents: React.FC = () => {
     firstName: student.user.firstName,
     lastName: student.user.lastName,
   })).filter((student) => {
-    return student.id == 1; 
+    return student.id == 1;
   });
 
-  useEffect(()=>{
+  useEffect(() => {
     const fetchStudents = async () => {
       const students = await AdminService.getStudent();
       setStudents(students);
-  
+
     };
-  
+
     fetchStudents();
 
   }, []);
@@ -65,7 +65,7 @@ const ViewStudents: React.FC = () => {
   return (
     <Container>
       <Navbar>
-        <NavbarButton 
+        <NavbarButton
           onClick={() => {
 
           }}>
@@ -77,7 +77,7 @@ const ViewStudents: React.FC = () => {
         rows={rows}
         columns={columns}
         checkboxSelection
-        
+
       />
     </Container>
   );

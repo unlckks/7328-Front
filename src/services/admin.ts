@@ -15,28 +15,34 @@ const getStudent = async () => {
     throw error;
   }
 };
-
-const getCourse = async () => {
-  
-  return axios.get(ADMIN_API_URL).then((res) => {
-    console.log(res);
-    return res; 
-  });
-};
-  
 /**
- * display faculty
- * @returns 
+ * 
+ * @returns display course
  */
-const getFaculty = async ()  => {
-  
-  return axios.get(ADMIN_API_URL).then((res) => {
-    console.log(res);
-    return res; 
-  });
+const getCourse = async () => {
+  try {
+    const response = await axios.get(ADMIN_API_URL + '/course');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching data: ', error);
+    throw error;
+  }
 };
 
-// Adding TA-related functions to your AuthService export
+/**
+ * 
+ * @returns display faculty
+ */
+const getFaculty = async () => {
+  try {
+    const response = await axios.get(ADMIN_API_URL + '/faculty');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching data: ', error);
+    throw error;
+  }
+};
+
 const AdminService = {
   getStudent,
   getCourse,
