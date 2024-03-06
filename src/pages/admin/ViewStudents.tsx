@@ -47,9 +47,7 @@ const ViewStudents: React.FC = () => {
     email: student.user.email,
     firstName: student.user.firstName,
     lastName: student.user.lastName,
-  })).filter((student) => {
-    return student.id == 1;
-  });
+  }));
 
   useEffect(() => {
     const fetchStudents = async () => {

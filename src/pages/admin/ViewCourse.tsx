@@ -17,29 +17,22 @@ export type CourseData = {
 };
 
 export const ViewCourse: React.FC = () => {
-
-
   const [course, setCourse] = useState<CourseData[]>([]);
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 100 },
     { field: 'courseCode', headerName: 'Course Code', width: 120 },
-    { field: 'title', headerName: 'Title', width: 150 },
+    { field: 'title', headerName: 'Title', width: 400 },
     { field: 'description', headerName: 'description', width: 250 },
   ];
 
-
-
-
-  const rows = course.map((course) => ({
+  const rows = course.map((course, index) => ({
+    IndexId: index,
     id: course.id,
     courseCode: course.courseCode,
     title: course.title,
-    description: course.description
-  })).filter((course) => {
-    return course.id == 1;
-  });
-
+    description: course.description,
+  }));
   useEffect(() => {
     const fetchCourse = async () => {
       try {
@@ -56,23 +49,15 @@ export const ViewCourse: React.FC = () => {
       }
     };
     fetchCourse();
-
   }, []);
 
   return (
     <Container>
       <Navbar>
-        <NavbarButton
-          onClick={() => {
-          }}>
-          View Course
-        </NavbarButton>
+        <NavbarButton onClick={() => {}}>View Course</NavbarButton>
       </Navbar>
       <Title>Course Information</Title>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        checkboxSelection />
+      <DataGrid rows={rows} columns={columns} checkboxSelection />
     </Container>
   );
 };
