@@ -47,6 +47,9 @@ const Home: React.FC = () => {
   const navigateToFacultyProfile = () => {
     navigate('/faculty-profile');
   };
+  const navigateToAdminProfile = () => {
+    navigate('/admin-profile');
+  };
 
   /**
    * Log out the user, delete user from localStorage
@@ -70,6 +73,7 @@ const Home: React.FC = () => {
     // Navigate to student/faculty profile.
     if (user.role === 'student') { navigate('/student-profile'); }
     else if (user.role === 'faculty') { navigate('/faculty-profile'); }
+    else if (user.role === 'admin') {  navigate('/admin-profile'); }
     
   };
 

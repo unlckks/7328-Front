@@ -9,7 +9,7 @@ import './stylesheets/App.css';
 import FacultyProfile from './pages/user/FacultyProfile';
 import StudentProfile from './pages/user/StudentProfile';
 import JobInfo from './pages/JobInfo';
-
+import AdminProfile from './pages/user/AdminProfile';
 
 import ApplicationPage from './pages/application/ApplicationPage';
 import PostJob from './pages/faculty-jobs/PostJobPage';
@@ -102,10 +102,12 @@ const App: React.FC = () => {
           <Route path="/inbox" element={<Inbox />} />
           <Route path="/jobs/details/:id" element={<JobInfo/>}/>
           <Route path="/post-job" element={<PrivateRoute role="faculty"><PostJob /></PrivateRoute>} />
+          <Route path="/post-job" element={<PrivateRoute role="faculty"><PostJob /></PrivateRoute>} />
           <Route path="/jobs" element={<PrivateRouteJob />} />
           <Route path="/faculty-profile" element={<PrivateRoute role="faculty"><FacultyProfile /></PrivateRoute>} />
           <Route path="/application-form" element={<ApplicationPage />} />
           <Route path="/view-applications" element={<PrivateRoute role="faculty"><ViewApplications /></PrivateRoute>} />
+          <Route path="/Admin-Profile" element={<PrivateRoute role="admin"><AdminProfile /></PrivateRoute>} />
           <Route path="/viewStudents" element={<PrivateRoute role="admin"><ViewStudents /></PrivateRoute>} />
           <Route path="/viewCourse" element={<PrivateRoute role="admin"><ViewCourse /></PrivateRoute>} />
           <Route path="/ViewFaculty" element={<PrivateRoute role="admin"><ViewFaculty /></PrivateRoute>} />
